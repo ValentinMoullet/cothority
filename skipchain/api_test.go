@@ -123,8 +123,8 @@ func TestClient_GetUpdateChain(t *testing.T) {
 
 	sbs := make([]*SkipBlock, sbCount)
 	var err error
-	sbs[0], err = makeGenesisRosterArgs(s, onet.NewRoster(roster.List[0:2]),
-		nil, VerificationNone, 2, 3)
+	sbs[0], err = makeGenesisRosterArgs(s, onet.NewRoster(roster.List[0:sbCount]),
+		nil, VerificationNone, sbCount, conodes)
 	log.ErrFatal(err)
 
 	log.Lvl1("Initialize skipchain.")
