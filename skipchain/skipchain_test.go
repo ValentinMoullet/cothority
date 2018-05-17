@@ -603,6 +603,11 @@ func TestService_Propagation(t *testing.T) {
 	if testing.Short() {
 		t.Skip("propagation does not run on travis, see #1000")
 	}
+	olddpt := defaultPropagateTimeout
+	defer func() {
+		defaultPropagateTimeout = olddpt
+	}()
+	defaultPropagateTimeout = 120 * time.Second
 	nbrNodes := 60
 	local := onet.NewLocalTest(cothority.Suite)
 
